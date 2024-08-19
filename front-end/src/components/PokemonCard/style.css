@@ -1,0 +1,26 @@
+.pokemon-card {
+  width: 23%;
+  padding: 6px 6px 0 6px;
+}
+
+.favorite-banner {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .pokemon-card {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 510px) and (max-width: 767px) {
+  .pokemon-card {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 509px) {
+  .pokemon-card {
+    width: 100%;
+  }
+}
