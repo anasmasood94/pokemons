@@ -9,12 +9,14 @@ function Pokemons() {
     loading,
     error,
     hasPages,
+    searchTerm,
     setPage,
     handleFavoriteClick,
     handleSearch,
     setSearchTerm,
   } = usePokemons();
 
+  if (loading) return <Loader />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -25,6 +27,7 @@ function Pokemons() {
           type="search"
           placeholder="Search"
           aria-label="Search"
+          value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
         <button
@@ -49,21 +52,17 @@ function Pokemons() {
         </div>
       )}
 
-      {loading ? (
-        <Loader />
-      ) : (
-        hasPages &&
-        pokemons.length > 0 && (
-          <div className="spinner-container d-flex justify-content-center align-items-center">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => setPage((prevPage) => prevPage + 1)}
-            >
-              Load more Pokemon
-            </button>
-          </div>
-        )
+      {hasPages && pokemons.length > 0 && (
+        <div className="spinner-container d-flex justify-content-center align-items-center">
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setPage((prevPage) => prevPage + 1)}
+            data-testid="load-more-pokemons"
+          >
+            Load more Pokemon
+          </button>
+        </div>
       )}
     </>
   );

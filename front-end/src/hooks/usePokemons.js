@@ -66,6 +66,7 @@ function usePokemons(initialPage = 1) {
     loading,
     error,
     hasPages,
+    searchTerm,
     setPage,
     handleFavoriteClick,
     handleSearch,
